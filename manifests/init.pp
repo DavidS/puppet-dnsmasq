@@ -30,6 +30,7 @@ class dnsmasq {
 	file { "/etc/dnsmasq.conf": checksum => md5, require => Package["dnsmasq"] }
 	service { dnsmasq:
 		ensure => running,
+		enable => true,
 		pattern => "/usr/sbin/dnsmasq",
 		subscribe => [ File["/etc/dnsmasq.conf"], File["/etc/hosts"] ]
 	}
